@@ -31,6 +31,8 @@
             <tag name="fos_user.requires_swift" />
         </service>
 
+        <service id="FOS\UserBundle\Mailer\MailerInterface" alias="fos_user.mailer.default"/>
+
         <service id="fos_user.mailer.twig_swift" class="FOS\UserBundle\Mailer\TwigSwiftMailer" public="false">
             <argument type="service" id="mailer" />
             <argument type="service" id="router" />
