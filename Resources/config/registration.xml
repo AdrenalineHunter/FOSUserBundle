@@ -13,6 +13,9 @@
             <argument>%fos_user.registration.form.validation_groups%</argument>
         </service>
 
+        <service id="FOS\UserBundle\Form\Factory\FactoryInterface" alias="fos_user.registration.form.factory">
+        </service>
+
         <service id="fos_user.registration.form.type" class="FOS\UserBundle\Form\Type\RegistrationFormType">
             <tag name="form.type" alias="fos_user_registration" />
             <argument>%fos_user.model.user.class%</argument>
