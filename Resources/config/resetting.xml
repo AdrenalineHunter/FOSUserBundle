@@ -24,18 +24,12 @@
             <argument>%fos_user.resetting.token_ttl%</argument>
         </service>
 
-        <service id="FOS\UserBundle\Form\Factory\FormFactory" alias="fos_user.resetting.form.factory" />
-
-        <service id="FOS\UserBundle\Form\Type\ResettingFormType" alias="fos_user.resetting.form.type" />
-
-        <service id="FOS\UserBundle\EventListener\ResettingListener" alias="fos_user.listener.resetting" />
-
         <service id="fos_user.resetting.controller" class="FOS\UserBundle\Controller\ResettingController" public="true">
             <argument type="service" id="event_dispatcher" />
             <argument type="service" id="fos_user.resetting.form.factory" />
-            <argument type="service" id="fos_user.user_manager.default" />
-            <argument type="service" id="fos_user.util.token_generator.default" />
-            <argument type="service" id="fos_user.mailer.default" />
+            <argument type="service" id="fos_user.user_manager" />
+            <argument type="service" id="fos_user.util.token_generator" />
+            <argument type="service" id="fos_user.mailer" />
             <argument>%fos_user.resetting.retry_ttl%</argument>
             <call method="setContainer">
                 <argument type="service" id="service_container" />
