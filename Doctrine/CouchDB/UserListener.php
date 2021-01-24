@@ -13,7 +13,7 @@ namespace FOS\UserBundle\Doctrine\CouchDB;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ODM\CouchDB\Event;
-use Doctrine\ODM\CouchDB\Event\LifecycleEventArgs;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Util\CanonicalFieldsUpdater;
 use FOS\UserBundle\Util\PasswordUpdaterInterface;
@@ -40,7 +40,7 @@ class UserListener implements EventSubscriber
         ];
     }
 
-    public function prePersist(LifecycleEventArgs $args)
+    public function prePersist(PreUpdateEventArgs $args)
     {
         $object = $args->getDocument();
         if ($object instanceof UserInterface) {
@@ -48,7 +48,7 @@ class UserListener implements EventSubscriber
         }
     }
 
-    public function preUpdate(LifecycleEventArgs $args)
+    public function preUpdate(PreUpdateEventArgs $args)
     {
         $object = $args->getDocument();
         if ($object instanceof UserInterface) {
