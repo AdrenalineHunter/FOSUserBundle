@@ -13,8 +13,8 @@ namespace FOS\UserBundle\Doctrine;
 
 @trigger_error('Using Groups is deprecated since version 2.2 and will be removed in 3.0.', E_USER_DEPRECATED);
 
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
 use FOS\UserBundle\Model\GroupInterface;
 use FOS\UserBundle\Model\GroupManager as BaseGroupManager;
 
@@ -24,7 +24,7 @@ use FOS\UserBundle\Model\GroupManager as BaseGroupManager;
 class GroupManager extends BaseGroupManager
 {
     /**
-     * @var ObjectManager
+     * @var EntityManagerInterface
      */
     protected $objectManager;
 
@@ -34,7 +34,7 @@ class GroupManager extends BaseGroupManager
     protected $class;
 
     /**
-     * @var ObjectRepository
+     * @var EntityRepository
      */
     protected $repository;
 
@@ -43,7 +43,7 @@ class GroupManager extends BaseGroupManager
      *
      * @param string $class
      */
-    public function __construct(ObjectManager $om, $class)
+    public function __construct(EntityManagerInterface $om, $class)
     {
         $this->objectManager = $om;
         $this->repository = $om->getRepository($class);
